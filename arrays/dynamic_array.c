@@ -202,6 +202,8 @@ void shrink_array(DArray *arr)
 
     arr->capacity = cap;
     arr->data = (int *)realloc(arr->data, sizeof(int) * cap);
+
+    validate_memory(arr->data);
 }
 
 /* validate_memory: checks if pointer points to NULL */

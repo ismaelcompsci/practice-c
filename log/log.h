@@ -3,6 +3,9 @@
 #include <stdarg.h>
 #include <stdio.h>
 
+#ifndef PROJECT_LOGGER
+#define PROJECT_LOGGER
+
 #define RED "\x1B[31m"
 #define GRN "\x1B[32m"
 #define YEL "\x1B[33m"
@@ -27,3 +30,5 @@ void info(char *);
 void success(char *);
 void error(char *);
 void debug(char *);
+
+#endif
