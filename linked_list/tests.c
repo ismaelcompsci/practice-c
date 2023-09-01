@@ -17,6 +17,8 @@ void run_all_tests()
     test_value_n_from_end();
     test_reverse();
     test_remove_value();
+
+    logger(SUCCESS, "ALL TESTS PASSED\t");
 }
 
 void test_size()

@@ -4,8 +4,8 @@
 #include "linked_list.h"
 
 int SUCCESS_MODE = 1;
-int INFO_MODE = 1;
-int ERROR_MODE = 1;
+int INFO_MODE = 0;
+int ERROR_MODE = 0;
 int DEBUG_MODE = 0;
 
 void print_list(node_t *head)
@@ -231,8 +231,6 @@ void erase(node_t **head, int index)
         logger(ERROR, "Index out of bounds");
         exit(EXIT_FAILURE);
     }
-
-    printf("%i\n", curr->data);
 
     if (prev)
     {

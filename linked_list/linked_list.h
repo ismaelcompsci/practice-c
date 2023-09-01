@@ -9,6 +9,7 @@ typedef struct Node
 {
     int data;
     struct Node *next;
+    
 } node_t;
 
 /* size: returns number of data elements in list */

@@ -2,7 +2,7 @@
 
 void logger(int level, char *fmt, ...)
 {
-    char buf[200]; // this should really be sized appropriately
+    char buf[800]; // this should really be sized appropriately
                    // possibly in response to a call to vsnprintf()
     va_list vl;
     va_start(vl, fmt);
