@@ -1,4 +1,3 @@
-#include "../log/log.h"
 #include "binary_search_tree.h"
 #include <math.h>
 #include "../queue/queue.h"
@@ -153,6 +152,21 @@ void print_values(bst_node *root, int space)
 void level_order(bst_node *root)
 {
 
-    queue_t *q = create_queue();
+    if (root == NULL)
+        return;
+
+    queue_t *q = create_queue(sizeof(bst_node));
     enqueue(q, root);
+
+    while (!empty(q))
+    {
+        bst_node *current = (bst_node *)dequeue(q);
+        printf("%i\n", current->number);
+
+        if (current->left != NULL)
+            enqueue(q, current->left);
+
+        if (current->right != NULL)
+            enqueue(q, current->right);
+    }
 }

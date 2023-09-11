@@ -1,22 +1,25 @@
 #include "queue.h"
 #include "../log/log.h"
 #include "../log/log.c"
+#include <stdio.h>
+#include <string.h>
 
 int SUCCESS_MODE = 1;
-int INFO_MODE = 1;
+int INFO_MODE = 0;
 int ERROR_MODE = 0;
 int DEBUG_MODE = 0;
 
-queue_t *create_queue()
+queue_t *create_queue(int data_size)
 {
     queue_t *q = malloc(sizeof(queue_t));
     q->head = NULL;
     q->tail = NULL;
+    q->data_size = data_size;
 
     return q;
 }
 
-void enqueue(queue_t *q, int data)
+void enqueue(queue_t *q, void *data)
 {
     logger(INFO, "enqueing %i\n", data);
     node *new = malloc(sizeof(node));
@@ -25,7 +28,10 @@ void enqueue(queue_t *q, int data)
         logger(ERROR, "enqueue NULL pointer", data);
         exit(EXIT_FAILURE);
     }
-    new->data = data;
+
+    new->data = malloc(q->data_size);
+    memcpy(new->data, data, q->data_size);
+
     new->next = NULL;
 
     if (q->tail)
@@ -38,7 +44,7 @@ void enqueue(queue_t *q, int data)
     logger(INFO, "enqueued %i\n", data);
 }
 
-int dequeue(queue_t *q)
+void *dequeue(queue_t *q)
 {
     if (empty(q))
     {
@@ -46,7 +52,7 @@ int dequeue(queue_t *q)
         exit(EXIT_FAILURE);
     }
     logger(INFO, "dequeing...\n");
-    int val;
+    void *val;
 
     if (q->head->next)
     {

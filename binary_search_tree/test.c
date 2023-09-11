@@ -7,11 +7,6 @@ void test_r_insert();
 void test_height();
 void test_level_order();
 
-int SUCCESS_MODE = 1;
-int INFO_MODE = 0;
-int ERROR_MODE = 1;
-int DEBUG_MODE = 0;
-
 void run_all_tests()
 {
     test_insert();
