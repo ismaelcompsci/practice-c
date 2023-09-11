@@ -51,6 +51,6 @@ void success(char *s)
 
 void error(char *s)
 {
-    printf(RED "[SUCCESS] " RESET);
+    printf(RED "[ERROR] " RESET);
     printf("%s", s);
 }
