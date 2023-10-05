@@ -19,17 +19,33 @@ bst_node *create_tree(int);
 bool is_in_tree(bst_node *root, int value);
 
 void print_values(bst_node *root, int space);
-void level_order(bst_node *root);
+int get_node_count(bst_node *root);
+
+bst_node *get_successor(bst_node *root, int data);
 
 int get_height(bst_node *root);
 
-int get_min(bst_node *root);
+bst_node *delete_value(bst_node *root, int value);
+bst_node *get_min(bst_node *root);
 int get_max(bst_node *root);
 
 void insert(bst_node **root, int);
 bst_node *r_insert(bst_node *root, int);
+void delete_tree(bst_node *root);
 
 bool search(bst_node **root, int);
-bool r_search(bst_node *root, int);
+bst_node *r_search(bst_node *root, int value);
+bool is_binary_search_tree(bst_node *root);
+bool is_subtree_lesser(bst_node *root, int value);
+bool is_subtree_greater(bst_node *root, int value);
+
+bool is_bst(bst_node *root);
+bool is_bst_util(bst_node *root, int minValue, int maxValue);
+
+void pre_order(bst_node *root);
+void post_order(bst_node *root);
+void in_order(bst_node *root);
+
+void traverse(bst_node *root);
 
 #endif

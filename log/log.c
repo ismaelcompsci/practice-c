@@ -2,8 +2,8 @@
 
 void logger(int level, char *fmt, ...)
 {
-    char buf[800]; // this should really be sized appropriately
-                   // possibly in response to a call to vsnprintf()
+    char buf[1001]; // this should really be sized appropriately
+                    // possibly in response to a call to vsnprintf()
     va_list vl;
     va_start(vl, fmt);
 
@@ -14,16 +14,16 @@ void logger(int level, char *fmt, ...)
     switch (level)
     {
     case INFO:
-        INFO_MODE ? info(buf) : NULL;
+        info(buf);
         break;
     case ERROR:
-        ERROR_MODE ? error(buf) : NULL;
+        error(buf);
         break;
     case DEBUG:
-        DEBUG_MODE ? debug(buf) : NULL;
+        debug(buf);
         break;
     case SUCCESS:
-        SUCCESS_MODE ? success(buf) : NULL;
+        success(buf);
         break;
     default:
         info(buf);

@@ -20,10 +20,10 @@
 #define DEBUG 3
 #define SUCCESS 4
 
-extern int INFO_MODE;
-extern int ERROR_MODE;
-extern int DEBUG_MODE;
-extern int SUCCESS_MODE;
+// extern int INFO_MODE;
+// extern int ERROR_MODE;
+// extern int DEBUG_MODE;
+// extern int SUCCESS_MODE;
 
 void logger(int, char *, ...);
 void info(char *);

@@ -82,13 +82,13 @@ bool empty(queue_t *q)
 
 void destroy_queue(queue_t *q)
 {
-    queue_t *curr = q->head;
-    queue_t *temp = q->head;
+    node *curr = q->head;
+    node *temp = q->head;
 
     while (curr)
     {
         temp = curr;
-        curr = curr->head->next;
+        curr = curr->next;
         free(temp);
     }
 

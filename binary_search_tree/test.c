@@ -6,6 +6,7 @@ void test_insert();
 void test_r_insert();
 void test_height();
 void test_level_order();
+void test_delete();
 
 void run_all_tests()
 {
@@ -13,6 +14,7 @@ void run_all_tests()
     test_r_insert();
     test_height();
     test_level_order();
+    test_delete();
 
     logger(SUCCESS, "ALL TESTS PASSED\n");
 }
@@ -27,7 +29,7 @@ void test_insert()
     assert(is_in_tree(root, 10) == true);
     assert(is_in_tree(root, 11) == false);
 
-    int min = get_min(root);
+    int min = get_min(root)->number;
 
     logger(SUCCESS, "insert PASSED\n");
 }
@@ -71,7 +73,29 @@ void test_level_order()
     int h = get_height(root);
     assert(3 == h);
 
-    level_order(root);
+    int count = get_node_count(root);
+    assert(count == 5);
 
     logger(SUCCESS, "level_order PASSED\n");
+}
+
+void test_delete()
+{
+    bst_node *root = create_tree(15);
+    insert(&root, 10);
+    insert(&root, 8);
+    insert(&root, 6);
+    insert(&root, 12);
+    insert(&root, 11);
+    insert(&root, 20);
+    insert(&root, 25);
+    insert(&root, 27);
+    insert(&root, 17);
+    insert(&root, 16);
+
+    // print_values(root, 0);
+
+    delete_tree(root);
+
+    logger(SUCCESS, "delete PASSED\n");
 }
