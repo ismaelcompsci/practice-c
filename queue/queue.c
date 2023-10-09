@@ -1,10 +1,10 @@
 #include "queue.h"
-#include "../log/log.h"
-#include "../log/log.c"
+// #include "../log/log.h"
+// #include "../log/log.c"
 #include <stdio.h>
 #include <string.h>
 
-int SUCCESS_MODE = 1;
+int SUCCESS_MODE = 0;
 int INFO_MODE = 0;
 int ERROR_MODE = 0;
 int DEBUG_MODE = 0;
@@ -21,11 +21,11 @@ queue_t *create_queue(int data_size)
 
 void enqueue(queue_t *q, void *data)
 {
-    logger(INFO, "enqueing %i\n", data);
+    // logger(INFO, "enqueing %i\n", data);
     node *new = malloc(sizeof(node));
     if (new == NULL)
     {
-        logger(ERROR, "enqueue NULL pointer", data);
+        // logger(ERROR, "enqueue NULL pointer", data);
         exit(EXIT_FAILURE);
     }
 
@@ -41,34 +41,34 @@ void enqueue(queue_t *q, void *data)
 
     if (q->head == 0)
         q->head = new;
-    logger(INFO, "enqueued %i\n", data);
+    // logger(INFO, "enqueued %i\n", data);
 }
 
 void *dequeue(queue_t *q)
 {
     if (empty(q))
     {
-        logger(ERROR, "list is emtpy\n");
+        // logger(ERROR, "list is emtpy\n");
         exit(EXIT_FAILURE);
     }
-    logger(INFO, "dequeing...\n");
+    // logger(INFO, "dequeing...\n");
     void *val;
 
     if (q->head->next)
     {
-        logger(INFO, "moving head\n");
+        // logger(INFO, "moving head\n");
         val = q->head->data;
         q->head = q->head->next;
     }
     else
     {
-        logger(INFO, "head is only value\n");
+        // logger(INFO, "head is only value\n");
         val = q->head->data;
         q->head = NULL;
         q->tail = NULL;
     }
 
-    logger(INFO, "dequeued %i\n", val);
+    // logger(INFO, "dequeued %i\n", val);
     return val;
 }
 

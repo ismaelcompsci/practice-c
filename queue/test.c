@@ -11,7 +11,7 @@ void run_all_tests()
 
 void test_empty()
 {
-    queue_t *q = create_queue();
+    queue_t *q = create_queue(sizeof(int));
 
     assert(empty(q));
 
@@ -21,7 +21,7 @@ void test_empty()
 
 void test_all()
 {
-    queue_t *q = create_queue();
+    queue_t *q = create_queue(sizeof(int));
 
     enqueue(q, 100);
     assert(empty(q) == false);
